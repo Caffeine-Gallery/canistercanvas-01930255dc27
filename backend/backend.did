@@ -1,0 +1,14 @@
+service : {
+  getICPData: () ->
+   (record {
+      lastUpdated: int;
+      marketCap: float64;
+      price: float64;
+    }) query;
+  getVotingResults: () -> (record {
+                             noVotes: nat;
+                             yesVotes: nat;
+                           }) query;
+  updateICPData: (float64, float64) -> ();
+  vote: (bool) -> ();
+}

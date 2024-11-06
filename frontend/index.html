@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICP in a Nutshell</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🌐 Internet Computer Protocol (ICP) in a Nutshell</h1>
+        
+        <div class="info-box">
+            The Internet Computer is a blockchain network that aims to extend the public internet by providing a platform for smart contracts and decentralized applications (dapps) with web-speed performance.
+        </div>
+
+        <h2>Core Concepts</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>📦 Canisters</h3>
+                <p>Smart contracts on the Internet Computer are called "canisters". They:</p>
+                <ul>
+                    <li>Contain both code and state</li>
+                    <li>Can serve web content directly</li>
+                    <li>Have their own memory pages</li>
+                    <li>Can make HTTP outcalls</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3>🧠 Neurons</h3>
+                <p>Neurons are governance tokens that:</p>
+                <ul>
+                    <li>Allow participation in network governance</li>
+                    <li>Generate voting rewards</li>
+                    <li>Have configurable dissolve delays</li>
+                    <li>Can follow other neurons</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>Network Architecture</h2>
+        <div id="network-diagram"></div>
+
+        <h2>Tokenomics</h2>
+        <div class="card">
+            <h3>ICP Token Utility:</h3>
+            <ul>
+                <li><span class="highlight">Cycles</span>: ICP can be converted to cycles to power computation</li>
+                <li><span class="highlight">Governance</span>: Staking in neurons for voting rights</li>
+                <li><span class="highlight">Storage</span>: Paying for canister storage</li>
+            </ul>
+        </div>
+
+        <h2>Governance System</h2>
+        <div id="governance-diagram"></div>
+
+        <h2>Key Features</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>⚡ Performance</h3>
+                <ul>
+                    <li>2-4 second transaction finality</li>
+                    <li>Web-speed smart contracts</li>
+                    <li>Scalable architecture</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3>🔒 Security</h3>
+                <ul>
+                    <li>Chain-key cryptography</li>
+                    <li>Threshold ECDSA</li>
+                    <li>Autonomous canisters</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>Real-time ICP Data</h2>
+        <div id="icp-data" class="card">
+            <p>Loading ICP data...</p>
+        </div>
+
+        <h2>Governance Voting Simulation</h2>
+        <div class="card">
+            <h3>Current Proposal: Should ICP implement sharding?</h3>
+            <p>Total Votes: <span id="total-votes">0</span></p>
+            <button id="vote-yes">Vote Yes</button>
+            <button id="vote-no">Vote No</button>
+            <p>Results: <span id="vote-results"></span></p>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.1.7/mermaid.min.js"></script>
+    <script type="module" src="index.js"></script>
+</body>
+</html>
