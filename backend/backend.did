@@ -1,14 +1,49 @@
-service : {
-  getICPData: () ->
-   (record {
-      lastUpdated: int;
-      marketCap: float64;
-      price: float64;
-    }) query;
-  getVotingResults: () -> (record {
-                             noVotes: nat;
-                             yesVotes: nat;
-                           }) query;
-  updateICPData: (float64, float64) -> ();
-  vote: (bool) -> ();
-}
+type VoteType = 
+ variant {
+   Abstain;
+   No;
+   Yes;
+ };
+type Result_3 = 
+ variant {
+   err: text;
+   ok: ProposalId;
+ };
+type Result_2 = 
+ variant {
+   err: text;
+   ok: ICPMetrics;
+ };
+type Result_1 = 
+ variant {
+   err: text;
+   ok: record {
+         abstain: nat;
+         no: nat;
+         yes: nat;
+       };
+ };
+type Result = 
+ variant {
+   err: text;
+   ok;
+ };
+type ProposalId = nat;
+type ICPNutshell = 
+ service {
+   createProposal: (text, nat) -> (Result_3);
+   getICPMetrics: () -> (Result_2) query;
+   getProposalResults: (ProposalId) -> (Result_1) query;
+   updateICPMetrics: (ICPMetrics) -> (Result);
+   vote: (ProposalId, VoteType) -> (Result);
+ };
+type ICPMetrics = 
+ record {
+   circulatingSupply: nat;
+   lastUpdated: int;
+   marketCap: float64;
+   price: float64;
+   totalSupply: nat;
+   volume24h: float64;
+ };
+service : () -> ICPNutshell
