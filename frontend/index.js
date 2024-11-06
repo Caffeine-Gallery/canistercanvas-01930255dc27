@@ -6,7 +6,13 @@ import { Actor, HttpAgent } from "@dfinity/agent";
 mermaid.initialize({ startOnLoad: true, theme: 'dark' });
 
 // Initialize highlight.js for code highlighting
-hljs.highlightAll();
+document.addEventListener('DOMContentLoaded', (event) => {
+    if (typeof hljs !== 'undefined') {
+        hljs.highlightAll();
+    } else {
+        console.warn('highlight.js is not loaded');
+    }
+});
 
 // Initialize AuthClient for Internet Identity integration
 let authClient;
@@ -120,8 +126,10 @@ graph LR
 `;
 
 // Render diagrams
-document.getElementById('network-diagram').innerHTML = `<div class="mermaid">${networkDiagram}</div>`;
-document.getElementById('governance-diagram').innerHTML = `<div class="mermaid">${governanceDiagram}</div>`;
+document.addEventListener('DOMContentLoaded', (event) => {
+    document.getElementById('network-diagram').innerHTML = `<div class="mermaid">${networkDiagram}</div>`;
+    document.getElementById('governance-diagram').innerHTML = `<div class="mermaid">${governanceDiagram}</div>`;
+});
 
 // Load active proposal
 async function loadActiveProposal() {
@@ -195,12 +203,19 @@ const techSpecs = {
     }
 };
 
-document.getElementById('tech-specs').textContent = JSON.stringify(techSpecs, null, 2);
+document.addEventListener('DOMContentLoaded', (event) => {
+    document.getElementById('tech-specs').textContent = JSON.stringify(techSpecs, null, 2);
+    if (typeof hljs !== 'undefined') {
+        hljs.highlightElement(document.getElementById('tech-specs'));
+    }
+});
 
 // Event Listeners
-document.getElementById('vote-yes').addEventListener('click', () => vote(1, { Yes: null }));
-document.getElementById('vote-no').addEventListener('click', () => vote(1, { No: null }));
-document.getElementById('vote-abstain').addEventListener('click', () => vote(1, { Abstain: null }));
+document.addEventListener('DOMContentLoaded', (event) => {
+    document.getElementById('vote-yes').addEventListener('click', () => vote(1, { Yes: null }));
+    document.getElementById('vote-no').addEventListener('click', () => vote(1, { No: null }));
+    document.getElementById('vote-abstain').addEventListener('click', () => vote(1, { Abstain: null }));
+});
 
 // Initialize the application
 initAuth();
